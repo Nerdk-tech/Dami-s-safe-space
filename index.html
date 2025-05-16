@@ -1,55 +1,57 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DAMI'S SAFE SPACE</title>
   <style>
     body {
       margin: 0;
+      padding: 20px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #001f3f, #007f5f);
       color: #fff;
       text-align: center;
-      padding: 20px;
     }
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.2em;
+      font-size: 2.8em;
     }
     button {
-      background: #00ffbf;
+      background-color: #00ffbf;
       border: none;
-      padding: 15px 30px;
-      margin: 15px;
+      padding: 12px 25px;
+      margin: 10px;
       font-size: 1.2em;
+      font-weight: bold;
       border-radius: 10px;
       cursor: pointer;
       color: #000;
-      font-weight: bold;
-    }
-    #passwordDiv, #mainContent, #responseDiv, #zodiacDiv {
-      display: none;
-      margin-top: 20px;
     }
     input {
       padding: 10px;
+      margin-top: 10px;
       font-size: 1em;
-      margin: 10px;
+      border-radius: 5px;
+    }
+    #passwordDiv, #mainContent, #responseDiv, #zodiacDiv {
+      display: none;
     }
   </style>
 </head>
 <body>
+
   <h1>DAMI'S SAFE SPACE 🚀</h1>
   <p>Hey beautiful soul, you’re not alone. Breathe in… you’re safe here now.</p>
-  <button onclick="showPasswordInput()">ENTER SAFE SPACE</button>  <div id="passwordDiv">
+  <button onclick="showPasswordInput()">ENTER SAFE SPACE</button>
+
+  <div id="passwordDiv">
     <p>ENTER THE KEY 🔐:</p>
     <input type="text" id="password" placeholder="Enter password">
     <button onclick="checkPassword()">Submit</button>
     <p id="passMsg"></p>
-  </div>  <div id="mainContent">
+  </div>
+
+  <div id="mainContent">
     <p>APPROVED ✅ GET IN HERE MY HOMIE!</p>
     <button onclick="handleIssue('alone')">ALONE</button>
     <button onclick="handleIssue('heartbreak')">HEARTBREAK</button>
@@ -57,59 +59,67 @@
     <button onclick="handleIssue('attractions')">ATTRACTIONS TO SOMEONE</button>
     <button onclick="handleIssue('confused')">CONFUSED IN LOVE</button>
     <button onclick="showZodiac()">CHECK YOUR ZODIAC SIGN</button>
-  </div>  <div id="responseDiv">
+  </div>
+
+  <div id="responseDiv">
     <p>Tell me what you're feeling:</p>
-    <input type="text" id="userProblem" placeholder="Type here...">
+    <input type="text" id="userProblem" placeholder="Type your problem...">
     <button onclick="respondToIssue()">Submit</button>
     <p id="comfortingWords"></p>
-  </div>  <div id="zodiacDiv">
+  </div>
+
+  <div id="zodiacDiv">
     <p>Input Month:</p>
-    <input type="text" id="monthInput" placeholder="e.g., March">
+    <input type="text" id="monthInput" placeholder="e.g. March">
     <button onclick="getZodiac()">Check Zodiac</button>
     <p id="zodiacResult"></p>
-  </div>  <script>
+  </div>
+
+  <script>
     function showPasswordInput() {
       document.getElementById('passwordDiv').style.display = 'block';
     }
 
     function checkPassword() {
       const pass = document.getElementById('password').value;
-      if (pass === "672444VXYL") {
-        document.getElementById('passMsg').textContent = "";
-        document.getElementById('mainContent').style.display = 'block';
+      if (pass === \"672444VXYL\") {
         document.getElementById('passwordDiv').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('passMsg').textContent = \"\";
       } else {
-        document.getElementById('passMsg').textContent = "INCORRECT BRO YOU AIN'T ENTERING HERE🤨";
+        document.getElementById('passMsg').textContent = \"INCORRECT BRO YOU AIN'T ENTERING HERE🤨\";
       }
     }
 
-    let currentIssue = "";
+    let currentIssue = '';
     function handleIssue(issue) {
       currentIssue = issue;
       document.getElementById('responseDiv').style.display = 'block';
+      document.getElementById('comfortingWords').textContent = '';
+      document.getElementById('userProblem').value = '';
     }
 
     function respondToIssue() {
       const problem = document.getElementById('userProblem').value.toLowerCase();
-      let response = "";
+      let response = '';
       switch (currentIssue) {
         case 'alone':
-          response = "You may feel alone, but you are deeply loved and seen. I'm here for you.";
+          response = \"You may feel alone, but you are deeply loved and seen. I'm here for you.\";
           break;
         case 'heartbreak':
-          response = "Heartbreak hurts, but it's proof that you’ve loved deeply. Healing is already on its way.";
+          response = \"Heartbreak hurts, but it's proof that you’ve loved deeply. Healing is already on its way.\";
           break;
         case 'stuck':
-          response = "Love can be tricky. It’s okay to feel lost—just take it one step at a time.";
+          response = \"Love can be tricky. It’s okay to feel lost—just take it one step at a time.\";
           break;
         case 'attractions':
-          response = "It’s natural to feel things. Embrace your emotions—they’re valid and they matter.";
+          response = \"It’s natural to feel things. Embrace your emotions—they’re valid and they matter.\";
           break;
         case 'confused':
-          response = "Love confusion is common. Clarity comes when you listen to your heart.";
+          response = \"Love confusion is common. Clarity comes when you listen to your heart.\";
           break;
         default:
-          response = "Whatever you’re going through, you’re not alone. I believe in you.";
+          response = \"Whatever you’re going through, you’re not alone. I believe in you.\";
       }
       document.getElementById('comfortingWords').textContent = response;
     }
